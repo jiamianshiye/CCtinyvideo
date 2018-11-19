@@ -1,13 +1,3 @@
-/*
- ============================================================================
- Name        : live.c
- Author      : LincolnHard
- Version     :
- Copyright   : free and open
- Description : Hello World in C, Ansi-style
- ============================================================================
- */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "video_capture.h"

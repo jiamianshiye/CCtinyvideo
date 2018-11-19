@@ -1,10 +1,3 @@
-/*
- * video_capture.h
- *
- *  Created on: Dec 24, 2015
- *      Author: Lincoln
- */
-
 #ifndef VIDEO_CAPTURE_H_
 #define VIDEO_CAPTURE_H_
 
