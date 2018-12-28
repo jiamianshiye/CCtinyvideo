@@ -1,26 +1,37 @@
-CC=gcc
+include mkrules/rules.mk
+include mkrules/header.mk
 
-EXEC:=v4l2
+APP:=CCtv
 FILES_C+=$(wildcard *.c)
 OBJS+=$(subst .c,.o, $(FILES_C))
 
 CC_OPTS=-g -Wall
 LD_FLAGS= -lpthread
 
-$(EXEC):$(OBJS)
+MODULES=fbshow video
+FILES=./app/main.c
+DIRS=\
+     fbshow\
+     video
+
+$(APP):$(OBJS)
 	gcc $^ -o $@ $(CC_OPTS)  $(LD_FLAGS)
 
 clean:
 	-rm *.o -r
-	-rm $(EXEC)
+	-rm $(APP)
 	-rm *.d -r
+	-rm -r $(LIBS)
+
 
 .PHONY: clean
-
-sources = *.c 
-
-
-all:clean	$(EXEC)
+all:
+	@echo "Get all resoureces include[$(INCLUDE)]....\n"
+	@for dir in $(DIRS);\
+	do\
+		$(MAKE) -fMAKE.mk -C./app/$$dir all MODULE=$$dir;\
+	done
+	@$(CC) $(FILES) $(LIBS) $(INCLUDE) -o $(APP)
 
 
 %.d:%.c
