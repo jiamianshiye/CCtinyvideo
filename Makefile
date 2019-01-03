@@ -31,6 +31,7 @@ all:
 	do\
 		$(MAKE) -fMAKE.mk -C./app/$$dir all MODULE=$$dir;\
 	done
+	$(MAKE)  -fMakefile -C./app/ obj 
 	@$(CC) $(FILES) $(LIBS) $(INCLUDE) -o $(APP)
 
 

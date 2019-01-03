@@ -6,7 +6,7 @@ apps:
 	$(MAKE) -f Makefile -C./src $(TARGET)
 	@echo \# Got module [$(MODULE)]
 libs:
-	mkdir $()/lib/ -p
+	mkdir $(DO_MAKE_BASE)/lib/ -p
 	$(MAKE) -f Makefile -C./src/  $(TARGET) 
 	@echo \# Got  module[$(MODULE)]...target[$(TARGET)]
 	
