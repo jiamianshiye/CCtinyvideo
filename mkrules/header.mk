@@ -13,7 +13,6 @@ CC_OPTS = -c -g -Wall
 AR_OPTS = -rc
 FILES = $(subst ./, , $(foreach dir,.,$(wildcard $(dir)/*.c)) )
 
-LIB_DIR = $(LIB_BASE_DIR)
-
-vpath %.a $(LIB_DIR)
-
+export LIB_BASE_DIR
+export OBJ_BASE_DIR
+export EXE_BASE_DIR

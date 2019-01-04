@@ -2,11 +2,12 @@ include mkrules/rules.mk
 include mkrules/header.mk
 
 APP:=CCtv
+
 FILES_C+=$(wildcard *.c)
+
 OBJS+=$(subst .c,.o, $(FILES_C))
 
-CC_OPTS=-g -Wall
-LD_FLAGS= -lpthread
+OBJ_PATH=$(OBJ_BASE_DIR)
 
 MODULES=fbshow video
 FILES=./app/main.c
@@ -14,8 +15,19 @@ DIRS=\
      fbshow\
      video
 
+INCLUDE+=
+
 $(APP):$(OBJS)
 	gcc $^ -o $@ $(CC_OPTS)  $(LD_FLAGS)
+
+all:
+	@echo "Get all resoureces include[$(INCLUDE)].dirs[$(DIRS)].\n"
+	@for dir in $(MODULES);\
+	do\
+		$(MAKE) -fMAKE.mk -C./app/$$dir all MODULE=$$dir;\
+	done
+	$(MAKE)  -fMakefile -C./app/ obj 
+	@$(CC) $(FILES) $(LIBS) $(INCLUDE) -o $(APP)
 
 clean:
 	-rm *.o -r
@@ -25,15 +37,6 @@ clean:
 
 
 .PHONY: clean
-all:
-	@echo "Get all resoureces include[$(INCLUDE)]....\n"
-	@for dir in $(DIRS);\
-	do\
-		$(MAKE) -fMAKE.mk -C./app/$$dir all MODULE=$$dir;\
-	done
-	$(MAKE)  -fMakefile -C./app/ obj 
-	@$(CC) $(FILES) $(LIBS) $(INCLUDE) -o $(APP)
-
 
 %.d:%.c
 	set -e; rm -f $@; \
