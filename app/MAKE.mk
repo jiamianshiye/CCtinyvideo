@@ -1,9 +1,9 @@
 demo:
 	@echo \# Got obj base dir OBJ[$(OBJ_BASE_DIR)] MODULE[$(MODULE)] 
 	mkdir -p $(OBJ_BASE_DIR)/$(MODULE)
-	$(MAKE) -fMAKE.mk libs
+	$(MAKE) -fMAKE.mk app TARGET=exe
 apps:
-	$(MAKE) -f Makefile -C./src $(TARGET)
+	$(MAKE) -C./src $(TARGET)
 	@echo \# Got module [$(MODULE)]
 libs:
 	@echo \# Got  module[$(MODULE)]...target[$(TARGET)]
@@ -15,4 +15,4 @@ obj:
 clean:
 	$(MAKE) -fMAKE.mk libs TARGET=clean
 
-all:demo
+all:demo 

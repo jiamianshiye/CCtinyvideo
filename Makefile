@@ -2,13 +2,9 @@ include mkrules/rules.mk
 include mkrules/header.mk
 
 APP:=CCtv
-
 FILES_C+=$(wildcard *.c)
-
 OBJS+=$(subst .c,.o, $(FILES_C))
-
 OBJ_PATH=$(OBJ_BASE_DIR)
-
 MODULES=fbshow video
 FILES=./app/main.c
 DIRS=\
@@ -16,7 +12,6 @@ DIRS=\
      video
 
 INCLUDE+=
-
 $(APP):$(OBJS)
 	gcc $^ -o $@ $(CC_OPTS)  $(LD_FLAGS)
 
@@ -26,14 +21,13 @@ all:
 	do\
 		$(MAKE) -fMAKE.mk -C./app/$$dir all MODULE=$$dir;\
 	done
-	$(MAKE)  -fMakefile -C./app/ obj 
+	$(MAKE)  -fMAKE.mk -C./app/ all
 	@$(CC) $(FILES) $(LIBS) $(INCLUDE) -o $(APP)
 
 clean:
-	-rm *.o -r
 	-rm $(APP)
-	-rm *.d -r
 	-rm -r $(LIBS)
+	-rm -r $(OBJ_PATH)
 
 
 .PHONY: clean
