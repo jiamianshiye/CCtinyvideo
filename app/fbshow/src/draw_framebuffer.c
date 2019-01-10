@@ -5,6 +5,8 @@
 #include <linux/fb.h> /* for frame buffer */
 #include <sys/mman.h>
 #include <unistd.h>
+
+#include "draw_framebuffer.h"
 #include "video_capture.h"
 
 static int fd = -1;

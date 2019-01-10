@@ -4,6 +4,7 @@
 OBJS = $(subst .c,.o, $(FILES))
 
 OBJ_DIR = $(OBJ_BASE_DIR)/$(MODULE)
+LIB_DIR = $(LIB_BASE_DIR)/$(MODULE)
 
 vpath %.o $(OBJ_DIR)
 

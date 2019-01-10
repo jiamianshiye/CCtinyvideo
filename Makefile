@@ -11,23 +11,25 @@ DIRS=\
      fbshow\
      video
 
-INCLUDE+=
-$(APP):$(OBJS)
-	gcc $^ -o $@ $(CC_OPTS)  $(LD_FLAGS)
+INCLUDE+=-I$(MOD_BASE_DIR)/fbshow/inc\
+	-I$(MOD_BASE_DIR)/video/inc		
 
 all:
 	@echo "Get all resoureces include[$(INCLUDE)].dirs[$(DIRS)].\n"
 	@for dir in $(MODULES);\
 	do\
-		$(MAKE) -fMAKE.mk -C./app/$$dir all MODULE=$$dir;\
+		$(MAKE) -fMAKE.mk -C./app/$$dir all $(INCLUDE)  MODULE=$$dir;\
 	done
 	$(MAKE)  -fMAKE.mk -C./app/ all
 	@$(CC) $(FILES) $(LIBS) $(INCLUDE) -o $(APP)
 
+#$(APP):$(OBJS)
+#	gcc $^ -o $@ $(CC_OPTS)  $(LD_FLAGS)
+
 clean:
 	-rm $(APP)
-	-rm -r $(LIBS)
-	-rm -r $(OBJ_PATH)
+	-rm -rf $(LIBS)
+	-rm -rf $(OBJ_PATH)
 
 
 .PHONY: clean
@@ -37,3 +39,5 @@ clean:
 	$(CC) -MM $(CPPFLAGS) $< > $@.$$$$; \
 	sed 's,\($*\)\.o[ :]*,\1.o $@ : ,g' < $@.$$$$ > $@; \
 	-rm -f $@.$$$$
+
+export INCLUDE
