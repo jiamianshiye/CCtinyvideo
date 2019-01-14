@@ -2,7 +2,7 @@
 include $(PRO_ROOT_PATH)/mkrules/header.mk
 
 
-#LIBS += $(LIB_DIR)/*.a
+LIBS += $(MODULE)/*.a
 #INCLUDE+=$(MOD_BASE_DIR)/$(MODULE)/inc
 
 

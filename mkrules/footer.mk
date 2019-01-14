@@ -13,8 +13,8 @@ EXE = $(EXE_BASE_DIR)/$(MODULE).out
 SO_LIB = $(EXE_BASE_DIR)/lib$(MODULE).so
 
 %.o:%.c
-	@echo \#$(MODULE) : Compiling $<, \n    obj dir[$(OBJ_DIR)] 
-	@echo \#$(MODULE) : Compiling $<, \n INCLUDE[$(INCLUDE)]
+	#@echo \#$(MODULE) : Compiling $<, \n    obj dir[$(OBJ_DIR)] 
+	#@echo \#$(MODULE) : Compiling $<, \n INCLUDE[$(INCLUDE)]
 	$(CC) $(CC_OPTS) $(INCLUDE) -o$(OBJ_DIR)/$@ $<
  
 lib : $(LIB_DIR)/$(LIB)
@@ -46,7 +46,7 @@ so:
 	
 
 exe:
-	@echo \# $(MODULE) : Linking execute file....
+	@echo \# $(MODULE) : Linking execute file[$(LIBS)]....
 	$(LD) $(LD_OPTS) -o $(EXE) $(LIBS)
 	@echo \# Final executable $(EXE)
 

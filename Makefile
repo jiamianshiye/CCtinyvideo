@@ -16,21 +16,22 @@ INCLUDE+=-I$(MOD_BASE_DIR)/fbshow/inc\
 
 all:
 	@echo "Get all resoureces include[$(INCLUDE)].dirs[$(DIRS)].\n"
+	@echo "List all lib files [$(PRO_LIBS)]...."
 	@for dir in $(MODULES);\
 	do\
 		$(MAKE) -fMAKE.mk -C./app/$$dir all $(INCLUDE)  MODULE=$$dir;\
 	done
-	$(MAKE)  -fMAKE.mk -C./app/ all
-	@$(CC) $(FILES) $(LIBS) $(INCLUDE) -o $(APP)
+	@echo "List all lib files [$(PRO_LIBS)]...."
+	@$(CC) $(FILES) $(PRO_LIBS) $(INCLUDE) -o $(APP)
 
 #$(APP):$(OBJS)
 #	gcc $^ -o $@ $(CC_OPTS)  $(LD_FLAGS)
 
 clean:
-	-rm $(APP)
+	-rm -rf $(APP)
 	-rm -rf $(LIBS)
 	-rm -rf $(OBJ_PATH)
-
+	-rm -rf $(LIB_BASE_DIR)
 
 .PHONY: clean
 

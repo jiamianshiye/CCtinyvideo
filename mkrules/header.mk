@@ -19,3 +19,4 @@ export LIB_BASE_DIR
 export OBJ_BASE_DIR
 export EXE_BASE_DIR
 export MOD_BASE_DIR
+export PRO_LIBS
