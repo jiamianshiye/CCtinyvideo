@@ -27,17 +27,17 @@ obj: $(OBJS)
 
 
 
-clean:
-	@echo \# $(MODULE) : Deleting temp files
-	-rm -f $(LIB_DIR)/$(LIB)
-	-rm -f $(OBJ_DIR)/*.*
+#clean:
+#	@echo \# $(MODULE) : Deleting temp files
+#	-rm -f $(LIB_DIR)/$(LIB)
+#	-rm -f $(OBJ_DIR)/*.*
 
 depend:
 	-mkdir -p $(LIB_DIR)
 	-mkdir -p $(OBJ_DIR)
 	-mkdir -p $(EXE_BASE_DIR)
 	@echo \# $(MODULE) : Building dependancies
-	$(CC) $(INCLUDE) $(FILES) -M > MAKE.DEPEND
+	#$(CC) $(INCLUDE) $(FILES) -M > MAKE.DEPEND
 
 
 so:

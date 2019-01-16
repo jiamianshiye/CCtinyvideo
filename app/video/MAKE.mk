@@ -7,12 +7,14 @@ apps:
 	$(MAKE) -f Makefile -C./src $(TARGET)
 	@echo \# Got module [$(MODULE)]
 libs:
-	mkdir $()/lib/ -p
 	$(MAKE) -f Makefile -C./src/  $(TARGET) 
+	##@echo "LIBS+=$(LIB_BASE_DIR)/$(MODULE)/$(MODULE).a" >> $(PRO_ROOT_PATH)/mkrules/dyna.mk
 	@echo \# Got  module[$(MODULE)]...target[$(TARGET)]
 	@echo \# Got  include[$(INCLUDE)] 
 
 clean:
-	$(MAKE) -fMAKE.mk libs TARGET=clean
+	#@echo "" > $(PRO_ROOT_PATH)/mkrules/dyna.mk
+	#$(MAKE) -fMAKE.mk TARGET=clean
 
 all:demo
+
