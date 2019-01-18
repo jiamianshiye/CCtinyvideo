@@ -16,8 +16,8 @@ INCLUDE+=-I$(MOD_BASE_DIR)/fbshow/inc\
 #LIBS=$(foreach mod,$(MODULES),$(wildcard $(LIB_BASE_DIR)/$(mod)/*.a))
 ####for mod in MODULES, add all lib for MODULES to val LIBS##########
 LIBS=$(foreach mod,$(MODULES),$(subst *.a,$(mod).a, $(LIB_BASE_DIR)/$(mod)/*.a))
-#LIBS+= $(LIB_BASE_DIR)/fbshow/fbshow.a\
-       $(LIB_BASE_DIR)/video/video.a
+###Need to add third part of libraries.
+#LIBS+= $(PRO_ROOT_PATH)/thirdpart/xxx.a
 
 all:
 	@echo "Get all resoureces include[$(INCLUDE)]......"
@@ -40,10 +40,10 @@ clean:
 
 .PHONY: clean
 
-%.d:%.c
-	set -e; rm -f $@; \
-	$(CC) -MM $(CPPFLAGS) $< > $@.$$$$; \
-	sed 's,\($*\)\.o[ :]*,\1.o $@ : ,g' < $@.$$$$ > $@; \
-	-rm -f $@.$$$$
+#%.d:%.c
+#	set -e; rm -f $@; \
+#	$(CC) -MM $(CPPFLAGS) $< > $@.$$$$; \
+#	sed 's,\($*\)\.o[ :]*,\1.o $@ : ,g' < $@.$$$$ > $@; \
+#	-rm -f $@.$$$$
 
 export INCLUDE
