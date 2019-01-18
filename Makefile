@@ -13,7 +13,10 @@ FILES=./app/main.c
 INCLUDE+=-I$(MOD_BASE_DIR)/fbshow/inc\
 	-I$(MOD_BASE_DIR)/video/inc		
 
-LIBS+= $(LIB_BASE_DIR)/fbshow/fbshow.a\
+#LIBS=$(foreach mod,$(MODULES),$(wildcard $(LIB_BASE_DIR)/$(mod)/*.a))
+####for mod in MODULES, add all lib for MODULES to val LIBS##########
+LIBS=$(foreach mod,$(MODULES),$(subst *.a,$(mod).a, $(LIB_BASE_DIR)/$(mod)/*.a))
+#LIBS+= $(LIB_BASE_DIR)/fbshow/fbshow.a\
        $(LIB_BASE_DIR)/video/video.a
 
 all:
@@ -24,7 +27,7 @@ all:
 	do\
 		$(MAKE) -fMAKE.mk -C./app/$$dir all $(INCLUDE)  MODULE=$$dir;\
 	done
-	##@echo "List all lib files [$(LIBS)]...."
+	@echo "List all lib files [$(LIBS)]...."
 	@$(CC) $(FILES) $(LIBS) $(INCLUDE) -o $(APP)
 
 
@@ -44,4 +47,3 @@ clean:
 	-rm -f $@.$$$$
 
 export INCLUDE
-export LIBS

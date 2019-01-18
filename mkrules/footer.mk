@@ -11,6 +11,7 @@ vpath %.o $(OBJ_DIR)
 LIB = $(MODULE).a
 EXE = $(EXE_BASE_DIR)/$(MODULE).out
 SO_LIB = $(EXE_BASE_DIR)/lib$(MODULE).so
+LIBS+=$(LIB_BASE_DIR)/$(MODULE)/$(MODULE).a
 
 %.o:%.c
 	#@echo \#$(MODULE) : Compiling $<, \n    obj dir[$(OBJ_DIR)] 
